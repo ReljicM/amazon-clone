@@ -9,6 +9,9 @@
   border: 1px solid #dddddd;
   border-radius: 3px;
 }
+.subtotal > p {
+  text-align: center;
+}
 
 .subtotal__gift {
   display: flex;
@@ -20,10 +23,10 @@
 }
 
 .subtotal > button {
-  background: #f0c14b;
-  border-radius: 2px;
-  width: 100%;
-  height: 30px;
-  border: 1px solid #a88734 #9c7e31 #846a29;
-  color: #111;
+  background: #FFD814;
+  border-color: #FCD200;
+  border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+    width: 100%!important;
+    height: 40px;
 }
