@@ -21,7 +21,7 @@ function Checkout() {
             <h1>Shopping Cart</h1>
             <div>No items selected. <Link to=".">Select all items</Link></div>
             <p>Price</p>
-        {basket && basket.map(item => (
+        {basket.map(item => (
           
           <ShoppingCart key={item.id} checked={item.checked} id={item.id} price={item.price} title={item.title} image={item.image} />
         ))}
@@ -31,11 +31,9 @@ function Checkout() {
        <CurrencyFormat
         renderText={(value) => (
             <>
-           
                 <p>
                      Subtotal ({basket.length} items) : <strong>{value}</strong>
                 </p>
-        
             </>
         )}
         decimalScale={2}

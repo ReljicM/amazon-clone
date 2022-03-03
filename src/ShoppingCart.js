@@ -12,16 +12,8 @@ function ShoppingCart({id ,price, title, image, rating}) {
     const removeBasket = () => {
         //dispatch the item into the data layer
         dispatch({
-            
             type: 'REMOVE_FROM_BASKET',
-            item: {
-                id: id,
-                title: title,
-                image: image,
-                price: price,
-                rating: rating,
-                checked: false,
-            }
+            id: id,
         })
     }
 

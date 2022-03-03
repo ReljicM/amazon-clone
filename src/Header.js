@@ -24,9 +24,11 @@ function Header() {
                 <span className="header__optionLineOne">
                     Hello Guest
                 </span>
+                <Link to="/login">
                 <span className="header__optionLineTwo">
                     Sign in
                 </span>
+                </Link>
 
             </div>
             <div className="header__option">
