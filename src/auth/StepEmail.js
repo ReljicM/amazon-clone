@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Login.css'
 
 function StepEmail({ nextStep, handleFormData, values }) {
 
+    const [email, setEmail] = useState('');
     const [error, setError] = useState(false);
 
 
@@ -17,35 +19,41 @@ function StepEmail({ nextStep, handleFormData, values }) {
         
     }
   return (
-    <div className="login__container">
-            <h1>Sign-in</h1>
+    <>
+      <div className="login__container">
+              <h1>Sign-in</h1>
 
-            <form onSubmit={submitFormData}>
-                <h5>Email or mobile phone number</h5>
-                <input
-                style={{ border: error ? "2px solid red" : "" }}
-                defaultValue={values.email}
-                onChange={handleFormData("email")}
+              <form onSubmit={submitFormData}>
+                  <h5>Email or mobile phone number</h5>
+                  <input
+                  style={{borderColor: error ? "#d00"  : "" }}
+                  defaultValue={values.email}
+                  onChange={handleFormData("email")}
 
-                 type="text" />
+                  type="text" />
 
-                {error ? (
-                <p style={{ color: "red" }}>
-                  Enter your email
-                </p>
-              ) : (
-                ""
-              )}
+                  {error ? (
+                  <p style={{ color: "red" }}>
+                    Enter your email
+                  </p>
+                ) : (
+                  ""
+                )}
 
-                <button className="login__signInButton">Continue</button>
-            </form>
+                  <button className="login__signInButton">Continue</button>
+              </form>
 
-            <p>
-            By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
-            </p>
-
-            <button type="submit" className="login__registerButton">Create your Amazon Account</button>
-        </div>
+              <p>
+              By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
+              </p>
+          </div>
+          <Link to='/register'>
+            <div className="login__divider">
+              <hr className="login__divider_left"/>New to Amazon?<hr className="login__divider_right" />
+                <button className="login__registerButton">Create your Amazon Account</button>
+            </div>
+          </Link>
+        </>
   )
 }
 

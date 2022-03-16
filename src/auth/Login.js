@@ -24,7 +24,7 @@ function Login() {
 
   const handleInputData = input => e => {
     // input value from the form
-    const {value } = e.target;
+    const { value } = e.target;
 
     //updating for data state taking previous state and then adding new value to create new object
     setFormData(prevState => ({
@@ -37,27 +37,39 @@ function Login() {
     // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 1:
       return (
-        
-        <div className="login">
-          <Link to="/">
-        <img
-        className="login__logo"
-         src="https://www.synointcdn.com/wp-content/uploads/2019/04/Amazon-Logo-PNG.png"/>
-        </Link>
-            <StepEmail nextStep={nextStep} handleFormData={handleInputData} values={formData} />
-        </div>
+        <>
+          <div className="login">
+            <Link to="/">
+          <img
+          className="login__logo"
+          src="https://www.synointcdn.com/wp-content/uploads/2019/04/Amazon-Logo-PNG.png"/>
+          </Link>
+              <StepEmail nextStep={nextStep} handleFormData={handleInputData} values={formData} />
+          </div>
+          <div className="login__footer">
+            
+          </div>
+        </>
       );
     // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 2:
       return (
-        <div className="login">
-          <Link to="/">
-        <img
-        className="login__logo"
-         src="https://www.synointcdn.com/wp-content/uploads/2019/04/Amazon-Logo-PNG.png"/>
-        </Link>
-            <StepPassword nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
-        </div>
+        <>
+          <div className="login">
+            <Link to="/">
+          <img
+          className="login__logo"
+          src="https://www.synointcdn.com/wp-content/uploads/2019/04/Amazon-Logo-PNG.png"/>
+          </Link>
+              <StepPassword nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
+          </div>
+          <div className="login__footer">
+            <div className="login__footer_divider">
+
+            </div>
+          </div>
+          
+        </>
       );
       // Only formData is passed as prop to show the final value at form submit
    

@@ -1,18 +1,30 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase'
+import { db } from '../firebase'
 
-function StepPassword({ nextStep, handleFormData, values }) {
-    const [error, setError] = useState(false);
+function StepPassword({ prevStep, handleFormData, values }) {
 
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
     const submitFormData = (e) => {
         e.preventDefault();
         if (values.password !== "") {
-            
-            nextStep();
+            setError(false)
         } else {
             setError(true);
         }
-        
+      }
+
+    const signin = e => {
+      e.preventDefault();
+      signInWithEmailAndPassword(auth, values.email, values.password)
+      .then(auth => {
+        navigate('/')
+      })
+      .catch(error => alert(error.message))
     }
 
   return (
@@ -20,7 +32,8 @@ function StepPassword({ nextStep, handleFormData, values }) {
     <h1>Sign-in</h1>
     <div className="login__showData">
     <p>{values.email}</p> 
-    <button>Change</button>
+
+    <button onClick={prevStep}>Change</button>
     </div>
     
 
@@ -39,14 +52,16 @@ function StepPassword({ nextStep, handleFormData, values }) {
                 ""
               )}
 
-        <button className="login__signInButton">Sign-In</button>
+        <button type="submit" onClick={signin} className="login__signInButton">Sign-In</button>
     </form>
+    <div className="login__checkbox">
+        <input type="checkBox" />
+        <p>
+        Keep me signed in.
+        </p>
+    </div>
+    
 
-    <p>
-    Keep me signed in.
-    </p>
-
-    <button className="login__registerButton">Create your Amazon Account</button>
 </div>
   )
 }
